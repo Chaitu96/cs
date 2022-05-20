@@ -1,0 +1,69 @@
+                                                                          SLIP 3
+Write a program to calculate length of string using standard library 5 marks] function.
+#include<stdio.h>
+#include<string.h>
+ 
+int main() {
+   char str[100];
+   int len;
+ 
+   printf("\nEnter the String : ");
+   gets(str);
+ 
+   len = strlen(str);
+ 
+   printf("\nLength of Given String : %d", len);
+   return(0);
+}
+
+Write a program to allocate memory dynamically for n integers. Accept the elements and calculate their sum and average
+#include<stdio.h>
+#include<stdlib.h>
+int main() {
+    int n,i,sum=0;
+    int *ptr;
+    float avg;
+    printf("\n Enter how many integers: ");
+    scanf("%d",&n);
+    ptr=(int*)malloc(n*sizeof(int));
+    for(i=0;i<n;i++)
+  {
+      printf("\n Enter number%d : ",i+1);
+      scanf("%d",&ptr[i]);
+      sum=sum+ptr[i];
+  }
+  avg=sum/n;
+  printf("\n Sum of numbers = %d\n",sum);
+  printf(" Average of numbers = %f",avg);
+  return 0;
+}
+
+Write a program declare a structure person (name, address) which contains another structure birthdate (day, month, year). Accept the details of n persons and display them.
+#include <stdio.h>
+struct student {
+    char name[50];
+    int roll;
+    float marks;
+} s;
+
+int main() {
+    printf("Enter information:\n");
+    printf("Enter name: ");
+    fgets(s.name, sizeof(s.name), stdin);
+
+    printf("Enter roll number: ");
+    scanf("%d", &s.roll);
+    printf("Enter marks: ");
+    scanf("%f", &s.marks);
+
+    printf("Displaying Information:\n");
+    printf("Name: ");
+    printf("%s", s.name);
+    printf("Roll number: %d\n", s.roll);
+    printf("Marks: %.1f\n", s.marks);
+
+    return 0;
+}
+
+
+
