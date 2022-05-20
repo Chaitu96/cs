@@ -1,0 +1,70 @@
+SLIP  1
+C program to define Macro to find maximum of two numbers
+#include <stdio.h>
+
+#define MAX(x,y) ((x>y)?x:y)
+
+int main()
+{
+	int a,b,max;
+	
+	printf("Enter first number: ");
+	scanf("%d",&a);
+	printf("Enter second number: ");
+	scanf("%d",&b);	
+	
+	max=MAX(a,b);
+	printf("Maximum number is: %d\n",max);
+	
+	return 0;
+}
+Find Sum and Average of an Array Using the Pointer in C
+#include<stdio.h>
+int main()
+{
+    float x[5], sum=0.0, avg;
+    int i;
+    float *px, *psum, *pavg;
+
+    px = &x[0];  //  Or, px = &x;
+    psum = &sum, pavg = &avg;
+
+    printf("Enter array Elements: ");
+    for (i=0;i<5;i++)
+    {
+        scanf("%f",(px+i));
+        *psum += *(px + i);
+    }
+
+    *pavg = *psum / 5;
+    printf("Sum= %.2f \t Average= %.2f\n", *psum, *pavg);
+
+    return 0;
+}
+
+Write a C program to accept details ofn students (roll number, name, [15 marks] percentage) using structure. maximum percentage
+#include <stdio.h>
+struct student {
+    char name[50];
+    int roll;
+    float marks;
+} s;
+
+int main() {
+    printf("Enter information:\n");
+    printf("Enter name: ");
+    fgets(s.name, sizeof(s.name), stdin);
+
+    printf("Enter roll number: ");
+    scanf("%d", &s.roll);
+    printf("Enter marks: ");
+    scanf("%f", &s.marks);
+
+    printf("Displaying Information:\n");
+    printf("Name: ");
+    printf("%s", s.name);
+    printf("Roll number: %d\n", s.roll);
+    printf("Marks: %.1f\n", s.marks);
+
+    return 0;
+}
