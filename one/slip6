@@ -1,0 +1,182 @@
+Write a C program to compare two strings using standard library function.
+1.	#include <stdio.h>  
+2.	#include<string.h>  
+3.	int main()  
+4.	{  
+5.	   char str1[20];  // declaration of char array  
+6.	   char str2[20];  // declaration of char array  
+7.	   int value; // declaration of integer variable  
+8.	   printf("Enter the first string : ");  
+9.	   scanf("%s",str1);  
+10.	   printf("Enter the second string : ");  
+11.	   scanf("%s",str2);  
+12.	   // comparing both the strings using strcmp() function  
+13.	   value=strcmp(str1,str2);  
+14.	   if(value==0)  
+15.	   printf("strings are same");  
+16.	   else  
+17.	   printf("strings are not same");  
+18.	   return 0;  
+19.	}  
+Write a C program to copy contents of one file to another file.
+#include <iostream>
+#include <stdlib.h>
+using namespace std;
+int main() {
+   char ch;// source_file[20], target_file[20];
+   FILE *source, *target;
+   char source_file[]="x1.txt";
+   char target_file[]="x2.txt";
+   source = fopen(source_file, "r");
+   if (source == NULL) {
+      printf("Press any key to exit...\n");
+      exit(EXIT_FAILURE);
+   }
+   target = fopen(target_file, "w");
+   if (target == NULL) {
+      fclose(source);
+      printf("Press any key to exit...\n");
+      exit(EXIT_FAILURE);
+   }
+   while ((ch = fgetc(source)) != EOF)
+      fputc(ch, target);
+   printf("File copied successfully.\n");
+   fclose(source);
+   fclose(target);
+   return 0;
+}
+Write a C program to create structure employee (id, name, salary). Accept details of n employees and perform the following operations
+a.	Display all employees. b. Display details of all employees having salary>_______.
+#include<stdio.h>
+#include<conio.h>
+struct emp
+{
+   int id,salary;
+   char name[20];
+}e[100];
+
+//To accept employee details
+void accept(int n)
+{
+   printf("\nEnter employee id: ");
+   scanf("%d",&e[n].id);
+   printf("\nEnter employee name: ");
+   scanf("%s",e[n].name);
+   printf("\nEnter employee salary: ");
+   scanf("%d",&e[n].salary);
+}
+
+//To display employee details
+void display(int n)
+{
+   printf("\nemployee id:\t\t%d",e[n].id);
+   printf("\nName:\t\t\t%s",e[n].name);
+   printf("\nsalary:\t\t\t%d\n",e[n].salary);
+}
+
+void main()
+{
+   int c,n,i,Id; //c=choice , n=number of employees , Id=employee id
+   do
+   {
+      printf("\n1.Accept Details\n2.Display Details\n3.Search Employee by Id \n4.Exit\nEnter your               choice:");
+      scanf("%d",&c);
+      switch(c)
+      {
+      	case 1:printf("Enter the number of employees:");
+                   scanf("%d",&n);
+                   for(i=0;i<n;i++)
+                   {
+         		accept(i);
+                   }
+                    break;
+         case 2:printf("\n===============Details of employees=====================\n");
+         	    for(i=0;i<n;i++)
+                   {
+         		 	display(i);
+                   }                    break;         case 3: printf("Enter the employee Id: ");
+         	     scanf("%d",&Id);
+                     for(i=0;i<n;i++)
+                                  	if(Id==e[i].id)
+                        {
+                     	     display(i);
+                             break;
+                        }
+                  }
+      }
+   }while(c<4);
+}
+
+SLIP 6
+Write a C program to find maximum of two numbers using macro
+#include <stdio.h>
+
+#define MAX(x,y) ((x>y)?x:y)
+
+int main()
+{
+	int a,b,max;
+	
+	printf("Enter first number: ");
+	scanf("%d",&a);
+	printf("Enter second number: ");
+	scanf("%d",&b);	
+	
+	max=MAX(a,b);
+	printf("Maximum number is: %d\n",max);
+	
+	return 0;
+}
+Write aC program to store the squares of numbers 1 to n in "squares.txtf" file.
+#include<stdio.h>
+#include<stdlib.h>
+int main() {
+    FILE *fp;
+    int n,i;
+    fp=fopen("squares.txt","w");
+    printf("\n Enter value of n : ");
+    scanf("%d",&n);
+    for(i=1;i<=n;i++)
+       putw(i*i,fp);
+    printf("\n Data written...");
+  return 0;
+}
+
+Write a C program to accept n elements using dynamic memory allocation and calculate the sum and average of the elements. Also find the largest element.
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+ {
+  int n;
+  double *data;
+  printf("Enter the total number of elements: ");
+  scanf("%d", &n);
+
+  // Allocating memory for n elements
+  data = (double *)calloc(n, sizeof(double));
+  if (data == NULL) {
+  printf("Error!!! memory not allocated.");
+  exit(0);
+  }
+
+  // Storing numbers entered by the user.
+  for (int i = 0; i < n; ++i) {
+  printf("Enter number%d: ", i + 1);
+  scanf("%lf", data + i);
+  }
+
+  // Finding the largest number
+  for (int i = 1; i < n; ++i) {
+    if (*data < *(data + i)) {
+      *data = *(data + i);
+    }
+  }
+  printf("Largest number = %.2lf", *data);
+
+  free(data);
+
+  return 0;
+}
+
+
