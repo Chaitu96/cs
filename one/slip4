@@ -1,0 +1,74 @@
+Write a program to calculate sum of two numbers. Pa [5 marks] numbers as command line arguments.
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{
+	int a,b,sum;
+	if(argc!=3)
+	{
+		printf("please use \"prg_name value1 value2 \"\n");
+		return -1;
+	}
+	
+	a = atoi(argv[1]);
+	b = atoi(argv[2]);
+	sum = a+b;
+	
+	printf("Sum of %d, %d is: %d\n",a,b,sum);
+	
+	return 0;
+}
+Write a program to create student structure having fields roll no name. Accept details of one student and write a function to display the details.
+#include <stdio.h>
+struct student {
+    char name[50];
+    int roll;
+    float marks;
+} s;
+
+int main() {
+    printf("Enter information:\n");
+    printf("Enter name: ");
+    fgets(s.name, sizeof(s.name), stdin);
+
+    printf("Enter roll number: ");
+    scanf("%d", &s.roll);
+    printf("Enter marks: ");
+    scanf("%f", &s.marks);
+
+    printf("Displaying Information:\n");
+    printf("Name: ");
+    printf("%s", s.name);
+    printf("Roll number: %d\n", s.roll);
+    printf("Marks: %.1f\n", s.marks);
+
+    return 0;
+}
+Write a program to copy contents of file a.txt to b.txt by changing the case of each alphabet.
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<ctype.h>
+
+int main()
+{
+     FILE *fp1,*fp2;
+     char ch;
+     fp1=fopen("a.txt","r");
+     fp2=fopen("b.txt","w");
+     if(!fp1)
+        printf("\n Error in reading..");
+     if(!fp2)
+        printf("\n Error in writing..");
+     else
+     {
+          while((ch=fgetc(fp1))!=EOF)
+          {
+             if(isupper(ch))
+                 fputc(tolower(ch),fp2);
+             else
+                 fputc(toupper(ch),fp2);
+           }
+      }
+return 0;
+}
